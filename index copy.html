@@ -1,0 +1,96 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>
+		Text Summarizer
+	</title>
+	<link rel = "icon" type = "image/png" href = "https://image.ibb.co/gibF30/st-cloud.png"/>
+<head>
+	<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript">
+		$(function (){
+		const config = {
+    apiKey: "AIzaSyBRZbGC0R_ySETLmFOznjLsFUNVgVaPTsA",
+    authDomain: "text-summarizer-eb34c.firebaseapp.com",
+    databaseURL: "https://text-summarizer-eb34c.firebaseio.com",
+    projectId: "text-summarizer-eb34c",
+    storageBucket: "text-summarizer-eb34c.appspot.com",
+    messagingSenderId: "822999903648"
+  };
+  firebase.initializeApp(config);
+  $('#newContact').on('submit', event => {
+  		event.preventDefault();
+  		const myt = $('#mytext').val();
+  		const e = "################"
+  		const p = "################"
+  		console.log(myt);
+  		firebase.auth().signInWithEmailAndPassword(e,p)
+  		.then(user => {
+  			firebase.database().ref('texts').push(myt);
+  		})
+  		.catch(error => {
+  			console.log(error);
+  		});
+  });
+});
+</script>
+<style>
+div.a {
+	margin: auto;
+    text-align: center;
+    align-self: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 60%;
+    border-radius: 5px;
+}
+
+.Intro{
+
+	font-family: cursive;
+}
+
+.b{
+	font-family: fantasy;
+	text-align: center;
+}
+
+#footer{
+	font-family: monospace;
+	text-align: center;
+}
+
+#twitter_build_icon{
+	align-content: center;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+/* On mouse-over, add a deeper shadow */
+.a:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#textsum{
+	align-content: center;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+<body>
+	<img id="textsum" src="https://image.ibb.co/gibF30/st-cloud.png" alt="st-cloud" border="0" width="200" height="200">
+	<div class="a">
+			<h2 class = "Intro">Enter your text right here</h2>
+			<form class="sucess-none" id="newContact" >
+  				<input type="text" name="message" id="mytext">
+  				<br>
+  				<input type="submit">
+			</form>
+	</div>
+	<img id="twitter_build_icon" src="https://image.ibb.co/guGOO0/twitter-build-icon.png" alt="twitter-build-icon" border="0" width="100" height="100">
+</body>
+<p id="footer"> Made with <span style="color: rgb(255,0,0);">&#9829;</span> in the North</p>
+</html>
